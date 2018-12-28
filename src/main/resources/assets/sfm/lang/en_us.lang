@@ -1,0 +1,8 @@
+# Items
+item.item1.name=Pitchfork
+
+# Blocks
+tile.ore_copper.name=Copper Ore
+
+# Creative Tab
+itemGroup.sfm=Simple Farming Mod

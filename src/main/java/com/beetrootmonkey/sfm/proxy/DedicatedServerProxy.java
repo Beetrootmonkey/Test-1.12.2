@@ -1,4 +1,4 @@
-package com.beetrootmonkey.test.proxy;
+package com.beetrootmonkey.sfm.proxy;
 
 public class DedicatedServerProxy extends CommonProxy {
 

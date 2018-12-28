@@ -1,6 +1,7 @@
-package com.beetrootmonkey.test.main;
+package com.beetrootmonkey.sfm.main;
 
-import com.beetrootmonkey.test.proxy.CommonProxy;
+import com.beetrootmonkey.sfm.client.ModTab;
+import com.beetrootmonkey.sfm.proxy.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -13,8 +14,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class Main
 {
     public static final String MOD_ID = "sfm";
+    
+    public static final ModTab creativeTab = new ModTab();
 
-    @SidedProxy(clientSide="com.beetrootmonkey.test.proxy.ClientOnlyProxy", serverSide="com.beetrootmonkey.proxy.DedicatedServerProxy")
+    @SidedProxy(clientSide="com.beetrootmonkey.sfm.proxy.ClientOnlyProxy", serverSide="com.beetrootmonkey.sfm.proxy.DedicatedServerProxy")
     public static CommonProxy proxy;
 
     @EventHandler
