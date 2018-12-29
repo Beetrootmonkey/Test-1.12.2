@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xsx",
+        " s ",
+        " s "
+    ],
+    "key":
+    {
+        "s":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
+        },
+        "x":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotIron"
+        }
+    },
+    "result":
+    {
+        "item": "sfm:item1"
+    }
+}
