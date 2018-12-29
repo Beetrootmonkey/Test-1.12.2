@@ -26,11 +26,9 @@ public class ModItems {
 		list.stream().forEach(i -> register(i));
 	}
 
-	private static <T extends ItemBase> T register(T item) {
+	private static void register(ItemBase item) {
 		ForgeRegistries.ITEMS.register(item);
 
-		((ItemModelProvider) item).registerItemModel(item);
-
-		return item;
+		((ItemModelProvider) item).registerItemModel();
 	}
 }

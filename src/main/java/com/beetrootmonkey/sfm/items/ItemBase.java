@@ -16,8 +16,7 @@ public class ItemBase extends Item implements ItemModelProvider {
 	}
 
 	@Override
-	public void registerItemModel(Item item) {
+	public void registerItemModel() {
 		Main.proxy.registerItemRenderer(this, 0, name);
 	}
-
 }
