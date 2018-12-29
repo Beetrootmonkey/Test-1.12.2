@@ -2,6 +2,7 @@ package com.beetrootmonkey.sfm.blocks;
 
 import java.util.Random;
 
+import com.beetrootmonkey.sfm.blocks.trough.TileEntityTrough;
 import com.beetrootmonkey.sfm.items.ItemModelProvider;
 import com.beetrootmonkey.sfm.main.Main;
 
@@ -12,6 +13,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -42,5 +44,9 @@ public class BlockBase extends Block implements ItemModelProvider {
 	@Override
 	public void registerItemModel() {
 		Main.proxy.registerItemRenderer(itemBlock, 0, name);
+	}
+	
+	public Class<? extends TileEntity> getTEClass() {
+		return null;
 	}
 }
