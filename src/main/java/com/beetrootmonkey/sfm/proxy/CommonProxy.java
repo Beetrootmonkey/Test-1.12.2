@@ -1,10 +1,12 @@
 package com.beetrootmonkey.sfm.proxy;
 
 import com.beetrootmonkey.sfm.blocks.ModBlocks;
+import com.beetrootmonkey.sfm.crafting.ModRecipes;
 import com.beetrootmonkey.sfm.items.ModItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -17,9 +19,11 @@ public abstract class CommonProxy {
 	}
 
 	public void init() {
+		
 	}
 
 	public void postInit() {
+		
 	}
 
 	abstract public boolean isDedicatedServer();
@@ -28,11 +32,16 @@ public abstract class CommonProxy {
 	
 	@SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		ModBlocks.registerBlocks();
+		ModBlocks.register();
 	}
 	
 	@SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-		ModItems.registerItems();
+		ModItems.register();
+	}
+	
+	@SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+		ModRecipes.register();
 	}
 }

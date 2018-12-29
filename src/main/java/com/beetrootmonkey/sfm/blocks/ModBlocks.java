@@ -1,7 +1,7 @@
 package com.beetrootmonkey.sfm.blocks;
 
 public class ModBlocks {
-	public static void registerBlocks() {
+	public static void register() {
 		
 	}
 }

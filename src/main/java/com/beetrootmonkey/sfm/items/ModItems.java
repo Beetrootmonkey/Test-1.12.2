@@ -16,9 +16,12 @@ public class ModItems {
 	@ObjectHolder("item1")
 	public static Item item1;
 	
-	private static ItemBase[] items = new ItemBase[] { new ItemBase("item1") };
+	private static ItemBase[] items = new ItemBase[]
+	{
+		new ItemBase("item1")
+	};
 
-	public static void registerItems() {
+	public static void register() {
 		List<ItemBase> list = new ArrayList<>(Arrays.asList(items));
 		list.stream().forEach(i -> register(i));
 	}
