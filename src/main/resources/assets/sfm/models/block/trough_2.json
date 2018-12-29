@@ -1,0 +1,64 @@
+{   "parent": "block/block",
+    "display": {
+        "fixed": {
+            "rotation": [ 0, 90, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.5, 0.5, 0.5 ]
+        }
+    },
+    "textures": {
+        "particle": "blocks/planks_oak",
+        "body": "blocks/planks_oak",
+        "top": "blocks/hay_block_top"
+    },
+    "elements": [
+        {   "__comment": "Base",
+            "from": [ 1, 0, 1 ],
+            "to": [ 15, 7, 15 ],
+            "faces": {
+                "up":  { "uv": [ 1,  1, 15, 15 ], "texture": "#top" },
+                "down":  { "uv": [ 1,  1, 15, 15 ], "texture": "#body", "cullface": "down" }
+            }
+        },
+        {   "__comment": "North",
+            "from": [ 1, 0, 1 ],
+            "to": [ 15, 14, 2 ],
+            "faces": {
+                "up":    { "uv": [ 1,  1, 15, 2 ], "texture": "#body" },
+                "down":    { "uv": [ 1,  14, 15, 15 ], "texture": "#body" },
+                "north":  { "uv": [ 1,  1,  15, 15 ], "texture": "#body" },
+                "south": { "uv": [ 1,  1,  15, 15 ], "texture": "#body" }
+            }
+        },
+        {   "__comment": "East",
+            "from": [ 14, 0, 1 ],
+            "to": [ 15, 14, 15 ],
+            "faces": {
+                "up":    { "uv": [ 14,  1, 15, 15 ], "texture": "#body" },
+                "down":    { "uv": [ 14,  1, 15, 15 ], "texture": "#body" },
+                "west":  { "uv": [ 1,  1,  15, 15 ], "texture": "#body" },
+                "east": { "uv": [ 1,  1,  15, 15 ], "texture": "#body" }
+            }
+        },
+        {   "__comment": "South",
+            "from": [ 1, 0, 14 ],
+            "to": [ 15, 14, 15 ],
+            "faces": {
+                "up":    { "uv": [ 1,  14, 15, 15 ], "texture": "#body" },
+                "down":    { "uv": [ 1,  1, 15, 2 ], "texture": "#body" },
+                "north":  { "uv": [ 1,  1,  15, 15 ], "texture": "#body" },
+                "south": { "uv": [ 1,  1,  15, 15 ], "texture": "#body" }
+            }
+        },
+        {   "__comment": "West",
+            "from": [ 1, 0, 1 ],
+            "to": [ 2, 14, 15 ],
+            "faces": {
+                "up":    { "uv": [ 1,  1, 2, 15 ], "texture": "#body" },
+                "down":    { "uv": [ 1,  1, 2, 15 ], "texture": "#body" },
+                "west":  { "uv": [ 1,  1,  15, 15 ], "texture": "#body" },
+                "east": { "uv": [ 1,  1,  15, 15 ], "texture": "#body" }
+            }
+        }
+    ]
+}

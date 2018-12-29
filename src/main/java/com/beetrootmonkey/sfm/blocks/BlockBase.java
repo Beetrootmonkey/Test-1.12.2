@@ -2,7 +2,7 @@ package com.beetrootmonkey.sfm.blocks;
 
 import java.util.Random;
 
-import com.beetrootmonkey.sfm.blocks.trough.TileEntityTrough;
+import com.beetrootmonkey.sfm.blocks.trough.TroughTE;
 import com.beetrootmonkey.sfm.items.ItemModelProvider;
 import com.beetrootmonkey.sfm.main.Main;
 

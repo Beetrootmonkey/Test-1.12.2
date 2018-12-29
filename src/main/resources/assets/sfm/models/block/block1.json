@@ -1,5 +1,5 @@
 {
-    "parent": "sfm:block/trough",
+    "parent": "block/block",
     "textures": {
         "particle": "blocks/planks_oak",
         "body": "blocks/planks_oak",

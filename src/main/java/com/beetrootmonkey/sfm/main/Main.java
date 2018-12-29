@@ -21,6 +21,9 @@ public class Main
     public static final ModTab creativeTab = new ModTab();
 
 	public static final Logger LOG = LogManager.getLogger(MOD_ID);
+	
+	@Mod.Instance
+    public static Main instance;
 
     @SidedProxy(clientSide="com.beetrootmonkey.sfm.proxy.ClientOnlyProxy", serverSide="com.beetrootmonkey.sfm.proxy.DedicatedServerProxy")
     public static CommonProxy proxy;

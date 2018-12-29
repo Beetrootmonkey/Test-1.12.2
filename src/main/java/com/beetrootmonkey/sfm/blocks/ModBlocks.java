@@ -3,8 +3,8 @@ package com.beetrootmonkey.sfm.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.beetrootmonkey.sfm.blocks.trough.BlockTrough;
-import com.beetrootmonkey.sfm.blocks.trough.TileEntityTrough;
+import com.beetrootmonkey.sfm.blocks.trough.TroughBlock;
+import com.beetrootmonkey.sfm.blocks.trough.TroughTE;
 import com.beetrootmonkey.sfm.items.ItemBase;
 import com.beetrootmonkey.sfm.items.ItemModelProvider;
 import com.beetrootmonkey.sfm.main.Main;
@@ -27,7 +27,7 @@ public class ModBlocks {
 	
 	private static BlockBase[] blocks = new BlockBase[]
 	{
-		new BlockTrough("block1")
+		new TroughBlock("block1")
 	};
 
 	public static void register() {
