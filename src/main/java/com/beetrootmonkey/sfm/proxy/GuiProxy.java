@@ -1,5 +1,8 @@
 package com.beetrootmonkey.sfm.proxy;
 
+import com.beetrootmonkey.sfm.blocks.nest.NestContainer;
+import com.beetrootmonkey.sfm.blocks.nest.NestContainerGui;
+import com.beetrootmonkey.sfm.blocks.nest.NestTE;
 import com.beetrootmonkey.sfm.blocks.trough.TroughContainer;
 import com.beetrootmonkey.sfm.blocks.trough.TroughContainerGui;
 import com.beetrootmonkey.sfm.blocks.trough.TroughTE;
@@ -18,6 +21,8 @@ public class GuiProxy implements IGuiHandler {
         TileEntity te = world.getTileEntity(pos);
         if (te instanceof TroughTE) {
             return new TroughContainer(player.inventory, (TroughTE) te);
+        } else if (te instanceof NestTE) {
+            return new NestContainer(player.inventory, (NestTE) te);
         }
         return null;
     }
@@ -29,6 +34,9 @@ public class GuiProxy implements IGuiHandler {
         if (te instanceof TroughTE) {
         	TroughTE containerTileEntity = (TroughTE) te;
             return new TroughContainerGui(containerTileEntity, new TroughContainer(player.inventory, containerTileEntity));
+        } else if (te instanceof NestTE) {
+        	NestTE containerTileEntity = (NestTE) te;
+            return new NestContainerGui(containerTileEntity, new NestContainer(player.inventory, containerTileEntity));
         }
         return null;
     }

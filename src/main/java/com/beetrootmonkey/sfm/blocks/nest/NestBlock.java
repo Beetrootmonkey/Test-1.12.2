@@ -1,8 +1,11 @@
-package com.beetrootmonkey.sfm.blocks.trough;
+package com.beetrootmonkey.sfm.blocks.nest;
+
+import java.util.Random;
 
 import com.beetrootmonkey.sfm.blocks.BlockBase;
 import com.beetrootmonkey.sfm.main.Main;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -29,13 +32,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TroughBlock extends BlockBase implements ITileEntityProvider {
+public class NestBlock extends BlockBase implements ITileEntityProvider {
 
-	public static final int GUI_ID = 1;
+	public static final int GUI_ID = 2;
 	public static final PropertyInteger LEVEL = PropertyInteger.create("level", 0, 4);
-	protected static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D);
+	protected static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.1875D, 0.9375D);
 
-	public TroughBlock(String name) {
+	public NestBlock(String name) {
 		super(Material.WOOD, name);
 
 		setHardness(2f);
@@ -83,12 +86,12 @@ public class TroughBlock extends BlockBase implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TroughTE();
+		return new NestTE();
 	}
 
 	@Override
 	public Class<? extends TileEntity> getTEClass() {
-		return TroughTE.class;
+		return NestTE.class;
 	}
 
 	@Override
@@ -97,73 +100,18 @@ public class TroughBlock extends BlockBase implements ITileEntityProvider {
 		if (world.isRemote) {
 			return true;
 		}
-		
 		TileEntity te = world.getTileEntity(pos);
-		if (!(te instanceof TroughTE)) {
+		if (!(te instanceof NestTE)) {
 			return false;
 		}
-		TroughTE troughTe = (TroughTE) te;
+		NestTE nestTE = (NestTE) te;
 
 		if (side == EnumFacing.UP) {
-			ItemStack stackInTrough = troughTe.getItemStack();
+			ItemStack stackInNest = nestTE.getItemStack();
 			ItemStack stackInHand = player.getHeldItem(hand);
-			boolean swap = true;
-
-			if (!stackInTrough.isEmpty() && stackInTrough.getItem() == stackInHand.getItem()
-					&& (!stackInHand.getHasSubtypes() || stackInHand.getMetadata() == stackInTrough.getMetadata())
-					&& ItemStack.areItemStackTagsEqual(stackInHand, stackInTrough)) {
-				
-				int j = stackInTrough.getCount() + stackInHand.getCount();
-				int maxSize = Math.min(stackInTrough.getMaxStackSize(), stackInHand.getMaxStackSize());
-
-				if (j <= maxSize) {
-					ItemStack copy1 = stackInTrough.copy();
-					copy1.grow(stackInHand.getCount());
-
-					troughTe.setItemStack(copy1);					
-					player.setHeldItem(hand, ItemStack.EMPTY);
-					swap = false;
-				} else if (stackInTrough.getCount() < maxSize) {
-					ItemStack copy1 = stackInTrough.copy();
-					copy1.setCount(maxSize);
-					
-					ItemStack copy2 = stackInHand.copy();
-					copy2.shrink(maxSize - stackInTrough.getCount());
-
-					troughTe.setItemStack(copy1);					
-					player.setHeldItem(hand, copy2);
-					swap = false;
-				} else if (stackInTrough.getCount() == maxSize) {
-					swap = false;
-				}
-			}
 			
-			if (swap) {
-				player.setHeldItem(hand, stackInTrough);
-				troughTe.setItemStack(stackInHand);
-			}
-
-//			if (stackInTrough == ItemStack.EMPTY) {
-//				if (stackInHand == ItemStack.EMPTY) {
-//					// Do nothing
-//					System.out.println("Both empty");
-//				} else {
-//					// Place item in trough
-//					System.out.println("Place item in trough");
-//					player.setHeldItem(hand, ItemStack.EMPTY);
-//					troughTe.setItemStack(stackInHand);
-//				}
-//			} else {
-//				if (stackInHand == ItemStack.EMPTY) {
-//					// Retrieve item
-//					System.out.println("Retrieve item");
-//					player.setHeldItem(hand, stackInTrough);
-//					troughTe.setItemStack(ItemStack.EMPTY);
-//				} else {
-//					// Do nothing
-//					System.out.println("Both not empty");
-//				}
-//			}
+			nestTE.setItemStack(ItemStack.EMPTY);
+			player.inventory.addItemStackToInventory(stackInNest);
 
 		} else {
 			player.openGui(Main.instance, GUI_ID, world, pos.getX(), pos.getY(), pos.getZ());
@@ -191,9 +139,9 @@ public class TroughBlock extends BlockBase implements ITileEntityProvider {
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		TileEntity te = world.getTileEntity(pos);
-		if (te instanceof TroughTE) {
-			TroughTE troughTE = (TroughTE) te;
-			ItemStack stack = troughTE.getItemStack();
+		if (te instanceof NestTE) {
+			NestTE nestTE = (NestTE) te;
+			ItemStack stack = nestTE.getItemStack();
 			if (stack != null) {
 				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
 			}

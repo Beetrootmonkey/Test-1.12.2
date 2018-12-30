@@ -3,6 +3,8 @@ package com.beetrootmonkey.sfm.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.beetrootmonkey.sfm.blocks.nest.BarnFloorBlock;
+import com.beetrootmonkey.sfm.blocks.nest.NestBlock;
 import com.beetrootmonkey.sfm.blocks.trough.TroughBlock;
 import com.beetrootmonkey.sfm.blocks.trough.TroughTE;
 import com.beetrootmonkey.sfm.items.ItemBase;
@@ -27,7 +29,9 @@ public class ModBlocks {
 	
 	private static BlockBase[] blocks = new BlockBase[]
 	{
-		new TroughBlock("block1")
+		new TroughBlock("block1"),
+		new NestBlock("nest"),
+		new BarnFloorBlock("barn_floor")
 	};
 
 	public static void register() {
@@ -42,7 +46,7 @@ public class ModBlocks {
 		((ItemModelProvider) block).registerItemModel();
 		Class clazz = block.getTEClass();
 		if (clazz != null) {
-			GameRegistry.registerTileEntity(clazz, new ResourceLocation(Main.MOD_ID + ":blocktrough"));
+			GameRegistry.registerTileEntity(clazz, new ResourceLocation(Main.MOD_ID + ":" + clazz.getSimpleName().toLowerCase()));
 		}
 	}
 }

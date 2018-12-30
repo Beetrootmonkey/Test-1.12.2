@@ -5,9 +5,11 @@ item.gold_ore.name=Gold Ore
 
 # Blocks
 tile.block1.name=Trough
+tile.nest.name=Nest
 
 # Creative Tab
 itemGroup.sfm=Simple Farming Mod
 
 # Containers
 container.trough.name=Trough
+container.nest.name=Nest

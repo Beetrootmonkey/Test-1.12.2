@@ -1,4 +1,4 @@
-package com.beetrootmonkey.sfm.blocks.trough;
+package com.beetrootmonkey.sfm.blocks.nest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,8 +9,10 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -26,12 +28,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TroughTE extends TileEntity implements ITickable {
+public class NestTE extends TileEntity implements ITickable {
 
 	private int counter = 0;
 	private static final int maxCounter = 100;
-	private static final int minAnimalCount = 2;
-	private static final int maxAnimalCount = 10;
 	private static final int rangeH = 10;
 	private static final int rangeV = 5;
 
@@ -40,7 +40,7 @@ public class TroughTE extends TileEntity implements ITickable {
 	private ItemStackHandler itemStackHandler = new ItemStackHandler(SIZE) {
 		@Override
 		protected void onContentsChanged(int slot) {
-			TroughTE.this.markDirty();
+			NestTE.this.markDirty();
 			updateBlockState();
 		}
 
@@ -54,9 +54,9 @@ public class TroughTE extends TileEntity implements ITickable {
 		IBlockState iblockstate = getWorld().getBlockState(pos);
 		int itemCount = itemStackHandler.getStackInSlot(0).getCount();
 //		System.out.println("itemCount: " + itemCount);
-		int value = (int) Math.ceil(itemCount / 16f);
+		int value = (int) Math.ceil(itemCount / 4f);
 //		System.out.println("Set to " + value);
-		getWorld().setBlockState(pos, iblockstate.withProperty(TroughBlock.LEVEL, value), 2);
+		getWorld().setBlockState(pos, iblockstate.withProperty(NestBlock.LEVEL, value), 2);
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class TroughTE extends TileEntity implements ITickable {
 	}
 
 	public String getName() {
-		return "container.trough.name";
+		return "container.nest.name";
 	}
 
 	@Nullable
@@ -131,45 +131,28 @@ public class TroughTE extends TileEntity implements ITickable {
 				updateBlockState();
 				
 				ItemStack stack = itemStackHandler.getStackInSlot(0);
-				if (stack == ItemStack.EMPTY) {
+				int maxStackSize = 16;
+				if (stack.getCount() >= maxStackSize) {
 					return;
 				}
 
-				List<EntityAnimal> list = getWorld().getEntitiesWithinAABB(EntityAnimal.class, new AxisAlignedBB(
+				List<EntityItem> list = getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(
 						getPos().add(-rangeH, -rangeV, -rangeH), getPos().add(rangeH, rangeV, rangeH)));
 
-				
-				list = list.stream().filter(e -> e.isBreedingItem(stack))
-						.collect(Collectors.toList());
+				list = list.stream().filter(e -> e.getItem().getItem() == Items.EGG && !e.isDead).collect(Collectors.toList());
 
-				Map<Class<EntityAnimal>, List<EntityAnimal>> map = new HashMap<>();
-				list.forEach(e -> {
-					Class clazz = e.getClass();
-					List<EntityAnimal> group = map.get(clazz);
-					if (group == null) {
-						group = new ArrayList<>();
-						map.put(clazz, group);
-					}
-					group.add(e);
-				});
-
-				map.keySet().forEach(key -> {
-					List<EntityAnimal> group = map.get(key);
-					final int totalCount = group.size();
-					if (totalCount >= minAnimalCount && totalCount <= maxAnimalCount) {
-						
-						group = group.stream().filter(e -> !e.isInLove() && e.getGrowingAge() == 0).collect(Collectors.toList());
-						final int count = group.size();
-						System.out.println(key.getSimpleName() + ": " + count + "/" + totalCount);
-						
-						for (int i = 0; i + 1 < count && itemStackHandler.getStackInSlot(0).getCount() >= 2; i += 2) {
-							group.get(i).setInLove(null);
-							group.get(i + 1).setInLove(null);
-
-							itemStackHandler.extractItem(0, 2, false);
+				for (EntityItem e : list) {
+					if (stack.getCount() < maxStackSize) {
+						if (stack.isEmpty()) {
+							itemStackHandler.setStackInSlot(0, e.getItem());
+						} else {
+							itemStackHandler.insertItem(0, e.getItem(), false);
 						}
+						getWorld().removeEntity(e);
+					} else {
+						break;
 					}
-				});
+				}
 			}
 		}
 	}

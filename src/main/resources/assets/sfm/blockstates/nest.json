@@ -1,0 +1,17 @@
+{
+    "multipart": [
+        {   "apply": { "model": "sfm:nest_0" }},
+        {   "when": { "level": 1 },
+            "apply": { "model": "sfm:nest_1", "uvlock": true }
+        },
+        {   "when": { "level": 2 },
+            "apply": { "model": "sfm:nest_2", "uvlock": true }
+        },
+        {   "when": { "level": "3" },
+            "apply": { "model": "sfm:nest_3", "uvlock": true }
+        },
+        {   "when": { "level": "4" },
+            "apply": { "model": "sfm:nest_4", "uvlock": true }
+        }
+    ]
+}
