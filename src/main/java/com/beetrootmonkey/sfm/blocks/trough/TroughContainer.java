@@ -1,6 +1,7 @@
 package com.beetrootmonkey.sfm.blocks.trough;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -87,8 +88,6 @@ public class TroughContainer extends Container {
 
         return itemstack;
     }
-    
-    
     
     // Override for merging because the target inv didn't notice the update
     

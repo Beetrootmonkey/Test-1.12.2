@@ -120,7 +120,7 @@ public class TroughTE extends TileEntity implements ITickable {
 			if (counter >= maxCounter) {
 				counter = 0;
 				// Now update for real
-//				updateBlockState();
+				updateBlockState();
 
 				ItemStack stack = itemStackHandler.getStackInSlot(0);
 				if (stack == ItemStack.EMPTY) {
