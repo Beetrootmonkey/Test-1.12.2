@@ -1,10 +1,12 @@
 package com.beetrootmonkey.sfm.blocks.trough;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,7 +16,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -35,17 +38,21 @@ public class TroughTE extends TileEntity implements ITickable {
 		@Override
 		protected void onContentsChanged(int slot) {
 			TroughTE.this.markDirty();
-
 			updateBlockState();
+		}
+		
+		@Override
+		public void setStackInSlot(int slot, ItemStack stack) {
+			super.setStackInSlot(slot, stack);
 		}
 	};
 
 	private void updateBlockState() {
 		IBlockState iblockstate = getWorld().getBlockState(pos);
 		int itemCount = itemStackHandler.getStackInSlot(0).getCount();
-		System.out.println("itemCount: " + itemCount);
+//		System.out.println("itemCount: " + itemCount);
 		int value = (int) Math.ceil(itemCount / 16f);
-		System.out.println("Set to " + value);
+//		System.out.println("Set to " + value);
 		getWorld().setBlockState(pos, iblockstate.withProperty(TroughBlock.LEVEL, value), 2);
 	}
 
@@ -54,8 +61,12 @@ public class TroughTE extends TileEntity implements ITickable {
 		return oldState.getBlock() != newState.getBlock();
 	}
 
-	public ItemStack getItemStackInInventory() {
+	public ItemStack getItemStack() {
 		return itemStackHandler.getStackInSlot(0);
+	}
+	
+	public void setItemStack(ItemStack stack) {
+		itemStackHandler.setStackInSlot(0, stack);
 	}
 
 	@Override
@@ -93,35 +104,63 @@ public class TroughTE extends TileEntity implements ITickable {
 		}
 		return super.getCapability(capability, facing);
 	}
-
+	
+	@Override
+	public ITextComponent getDisplayName() {
+		return new TextComponentString("Trough");
+	}
+	
 	@Override
 	public void update() {
 		if (getWorld().isRemote) {
 			// Client
 		} else {
 			// Server
-			updateBlockState();
 			counter++;
 			if (counter >= maxCounter) {
 				counter = 0;
 				// Now update for real
+//				updateBlockState();
+
+				ItemStack stack = itemStackHandler.getStackInSlot(0);
+				if (stack == ItemStack.EMPTY) {
+					return;
+				}
+				
 				List<EntityAnimal> list = getWorld().getEntitiesWithinAABB(EntityAnimal.class, new AxisAlignedBB(
 						getPos().add(-rangeH, -rangeV, -rangeH), getPos().add(rangeH, rangeV, rangeH)));
-
-				final int count = list.size();
-				if (count >= minAnimalCount && count <= maxAnimalCount) {
-					if (count % 2 != 0) {
-						list.remove(getWorld().rand.nextInt(count));
+				
+				list = list.stream().filter(e -> !e.isInLove() && e.getGrowingAge() == 0 && e.isBreedingItem(stack)).collect(Collectors.toList());
+				
+				Map<Class<EntityAnimal>, List<EntityAnimal>> map = new HashMap<>();
+				list.forEach(e -> {
+					Class clazz = e.getClass();
+					List<EntityAnimal> group = map.get(clazz);
+					if (group == null) {
+						group = new ArrayList<>();
+						map.put(clazz, group);
 					}
+					group.add(e);
+				});
 
-					for (EntityAnimal e : list) {
-						if (!e.isInLove() && e.getGrowingAge() == 0 && itemStackHandler.getStackInSlot(0).getCount() > 0
-								&& e.isBreedingItem(itemStackHandler.getStackInSlot(0))) {
-							e.setInLove(null);
-							itemStackHandler.extractItem(0, 1, false);
+				map.keySet().forEach(key -> {
+					List<EntityAnimal> group = map.get(key);
+					System.out.println(key.getSimpleName() + ": " + group.size());
+				});
+				
+				map.keySet().forEach(key -> {
+					List<EntityAnimal> group = map.get(key);
+					final int count = group.size();
+					if (count >= minAnimalCount && count <= maxAnimalCount) {
+						
+						for(int i = 0; i + 1 < count && itemStackHandler.getStackInSlot(0).getCount() >= 2; i += 2) {
+							group.get(i).setInLove(null);
+							group.get(i + 1).setInLove(null);
+
+							itemStackHandler.extractItem(0, 2, false);
 						}
-					}
-				}
+					}		
+				});	
 			}
 		}
 	}

@@ -1,9 +1,17 @@
 {
-    "variants": {
-        "level=0": { "model": "sfm:trough_0" },
-        "level=1": { "model": "sfm:trough_1" },
-        "level=2": { "model": "sfm:trough_2" },
-        "level=3": { "model": "sfm:trough_3" },
-        "level=4": { "model": "sfm:trough_4" }
-    }
+    "multipart": [
+        {   "apply": { "model": "sfm:trough_0" }},
+        {   "when": { "level": 1 },
+            "apply": { "model": "sfm:trough_1", "uvlock": true }
+        },
+        {   "when": { "level": 2 },
+            "apply": { "model": "sfm:trough_2", "uvlock": true }
+        },
+        {   "when": { "level": "3" },
+            "apply": { "model": "sfm:trough_3", "uvlock": true }
+        },
+        {   "when": { "level": "4" },
+            "apply": { "model": "sfm:trough_4", "uvlock": true }
+        }
+    ]
 }
