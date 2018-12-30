@@ -90,6 +90,19 @@ public class TroughBlock extends BlockBase implements ITileEntityProvider {
 	public Class<? extends TileEntity> getTEClass() {
 		return TroughTE.class;
 	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
+	{
+		TileEntity tileEntity = worldIn.getTileEntity(pos);
+		if (tileEntity instanceof TroughTE) {
+			TroughTE te = (TroughTE)tileEntity;
+			int level = (int) Math.ceil(te.getItemStack().getCount() / 16f);
+			level = MathHelper.clamp(level, 0, 4);
+			return getDefaultState().withProperty(LEVEL, level);
+		}
+		return state;
+	}
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,

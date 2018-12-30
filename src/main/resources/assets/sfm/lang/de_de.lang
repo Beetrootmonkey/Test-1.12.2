@@ -1,11 +1,11 @@
 # Items
-item.item1.name=Pitchfork
+item.item1.name=Mistgabel
 
 # Blocks
-tile.block1.name=Trough
+tile.block1.name=Trog
 
 # Creative Tab
 itemGroup.sfm=Simple Farming Mod
 
 # Containers
-container.trough.name=Trough
+container.trough.name=Trog

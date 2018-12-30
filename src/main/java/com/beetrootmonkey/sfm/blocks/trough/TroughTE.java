@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,6 +20,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -40,7 +43,7 @@ public class TroughTE extends TileEntity implements ITickable {
 			TroughTE.this.markDirty();
 			updateBlockState();
 		}
-		
+
 		@Override
 		public void setStackInSlot(int slot, ItemStack stack) {
 			super.setStackInSlot(slot, stack);
@@ -64,7 +67,7 @@ public class TroughTE extends TileEntity implements ITickable {
 	public ItemStack getItemStack() {
 		return itemStackHandler.getStackInSlot(0);
 	}
-	
+
 	public void setItemStack(ItemStack stack) {
 		itemStackHandler.setStackInSlot(0, stack);
 	}
@@ -104,12 +107,17 @@ public class TroughTE extends TileEntity implements ITickable {
 		}
 		return super.getCapability(capability, facing);
 	}
-	
+
+	public String getName() {
+		return "container.trough.name";
+	}
+
+	@Nullable
 	@Override
 	public ITextComponent getDisplayName() {
-		return new TextComponentString("Trough");
+		return new TextComponentTranslation(this.getName());
 	}
-	
+
 	@Override
 	public void update() {
 		if (getWorld().isRemote) {
@@ -126,12 +134,13 @@ public class TroughTE extends TileEntity implements ITickable {
 				if (stack == ItemStack.EMPTY) {
 					return;
 				}
-				
+
 				List<EntityAnimal> list = getWorld().getEntitiesWithinAABB(EntityAnimal.class, new AxisAlignedBB(
 						getPos().add(-rangeH, -rangeV, -rangeH), getPos().add(rangeH, rangeV, rangeH)));
-				
-				list = list.stream().filter(e -> !e.isInLove() && e.getGrowingAge() == 0 && e.isBreedingItem(stack)).collect(Collectors.toList());
-				
+
+				list = list.stream().filter(e -> !e.isInLove() && e.getGrowingAge() == 0 && e.isBreedingItem(stack))
+						.collect(Collectors.toList());
+
 				Map<Class<EntityAnimal>, List<EntityAnimal>> map = new HashMap<>();
 				list.forEach(e -> {
 					Class clazz = e.getClass();
@@ -147,20 +156,20 @@ public class TroughTE extends TileEntity implements ITickable {
 					List<EntityAnimal> group = map.get(key);
 					System.out.println(key.getSimpleName() + ": " + group.size());
 				});
-				
+
 				map.keySet().forEach(key -> {
 					List<EntityAnimal> group = map.get(key);
 					final int count = group.size();
 					if (count >= minAnimalCount && count <= maxAnimalCount) {
-						
-						for(int i = 0; i + 1 < count && itemStackHandler.getStackInSlot(0).getCount() >= 2; i += 2) {
+
+						for (int i = 0; i + 1 < count && itemStackHandler.getStackInSlot(0).getCount() >= 2; i += 2) {
 							group.get(i).setInLove(null);
 							group.get(i + 1).setInLove(null);
 
 							itemStackHandler.extractItem(0, 2, false);
 						}
-					}		
-				});	
+					}
+				});
 			}
 		}
 	}
