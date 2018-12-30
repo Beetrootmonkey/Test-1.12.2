@@ -28,7 +28,6 @@ public class ClientOnlyProxy extends CommonProxy {
 	@Override
 	public void registerItemRenderer(Item item, int meta, String id) {
 		ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation(Main.MOD_ID + ":" + id, "inventory");
-	    final int DEFAULT_ITEM_SUBTYPE = 0;
-	    ModelLoader.setCustomModelResourceLocation(item, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
+	    ModelLoader.setCustomModelResourceLocation(item, meta, itemModelResourceLocation);
 	}
 }

@@ -41,6 +41,7 @@ public class TroughBlock extends BlockBase implements ITileEntityProvider {
 		setHardness(2f);
 		setResistance(12f);
 		setLightOpacity(0);
+		setHarvestLevel("axe", 1);
 	}
 
 	@Override

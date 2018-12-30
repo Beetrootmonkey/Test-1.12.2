@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "particle": "sfm:blocks/barn_floor_0",
+        "bottom": "sfm:blocks/barn_floor_0",
+        "top": "sfm:blocks/barn_floor_1",
+        "side": "sfm:blocks/barn_floor_0"
+    }
+}

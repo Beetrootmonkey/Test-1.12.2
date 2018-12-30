@@ -6,6 +6,11 @@ item.gold_ore.name=Gold Ore
 # Blocks
 tile.block1.name=Trough
 tile.nest.name=Nest
+tile.barn_floor_0.name=Barn Floor
+tile.barn_floor_1.name=Barn Floor (Slightly Dirty)
+tile.barn_floor_2.name=Barn Floor (Dirty)
+tile.barn_floor_3.name=Barn Floor (Very Dirty)
+tile.barn_floor_4.name=Barn Floor (Health Risk)
 
 # Creative Tab
 itemGroup.sfm=Simple Farming Mod

@@ -3,7 +3,7 @@ package com.beetrootmonkey.sfm.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.beetrootmonkey.sfm.blocks.nest.BarnFloorBlock;
+import com.beetrootmonkey.sfm.blocks.barnfloor.BarnFloorBlock;
 import com.beetrootmonkey.sfm.blocks.nest.NestBlock;
 import com.beetrootmonkey.sfm.blocks.trough.TroughBlock;
 import com.beetrootmonkey.sfm.blocks.trough.TroughTE;

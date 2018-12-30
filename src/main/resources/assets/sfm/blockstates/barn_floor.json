@@ -1,5 +1,9 @@
 {
     "variants": {
-        "normal": { "model": "andesite" }
+        "type=0": { "model": "sfm:barn_floor_0" },
+        "type=1": { "model": "sfm:barn_floor_1" },
+        "type=2": { "model": "sfm:barn_floor_2" },
+        "type=3": { "model": "sfm:barn_floor_3" },
+        "type=4": { "model": "sfm:barn_floor_4" }
     }
 }

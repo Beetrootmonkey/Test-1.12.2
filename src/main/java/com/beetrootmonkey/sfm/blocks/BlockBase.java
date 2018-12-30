@@ -29,7 +29,6 @@ public class BlockBase extends Block implements ItemModelProvider {
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.creativeTab);
-		setHarvestLevel("axe", 1);
 		
 		itemBlock = new ItemBlock(this);
 		itemBlock.setRegistryName(name);
