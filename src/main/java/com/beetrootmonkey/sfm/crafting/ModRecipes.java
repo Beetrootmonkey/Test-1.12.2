@@ -17,6 +17,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.EnumHelperClient;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModRecipes {
 
@@ -24,14 +25,21 @@ public class ModRecipes {
 
 	private static IRecipe[] recipes = new IRecipe[]
 	{
-		new ShapelessRecipes(group, new ItemStack(ModItems.item1), toIngredients(
+		new ShapelessRecipes(group, new ItemStack(ModItems.PITCHFORK), toIngredients(
 			new ItemStack(Items.IRON_NUGGET),
 			new ItemStack(Items.STICK))).setRegistryName("item1")
 	};
+	
+	public static void registerSmeltingRecipes() {
+		GameRegistry.addSmelting(ModItems.IRON_ORE, new ItemStack(Items.IRON_INGOT), 0.35f);
+		GameRegistry.addSmelting(ModItems.GOLD_ORE, new ItemStack(Items.GOLD_INGOT), 0.35f);
+	}
 
 	public static void register() {
 		List<IRecipe> list = new ArrayList<>(Arrays.asList(recipes));
 		list.stream().forEach(r -> ForgeRegistries.RECIPES.register(r));
+		
+		registerSmeltingRecipes();
 	}
 
 	private static NonNullList<Ingredient> toIngredients(Ingredient... ingredients) {

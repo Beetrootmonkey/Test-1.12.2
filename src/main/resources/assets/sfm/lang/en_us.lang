@@ -1,5 +1,7 @@
 # Items
 item.item1.name=Pitchfork
+item.iron_ore.name=Iron Ore
+item.gold_ore.name=Gold Ore
 
 # Blocks
 tile.block1.name=Trough

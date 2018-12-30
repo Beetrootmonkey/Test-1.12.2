@@ -14,11 +14,19 @@ import scala.actors.threadpool.Arrays;
 public class ModItems {
 
 	@ObjectHolder("item1")
-	public static Item item1;
+	public static Item PITCHFORK;
+	
+	@ObjectHolder("iron_ore")
+	public static Item IRON_ORE;
+	
+	@ObjectHolder("gold_ore")
+	public static Item GOLD_ORE;
 	
 	private static ItemBase[] items = new ItemBase[]
 	{
-		new ItemBase("item1")
+		new ItemBase("item1"),
+		new ItemBase("iron_ore"),
+		new ItemBase("gold_ore")
 	};
 
 	public static void register() {
