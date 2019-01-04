@@ -1,4 +1,4 @@
-## Simple Farming
+## Farming
 
 ### Implemented
 - Trough
@@ -46,7 +46,7 @@
   - Item that you get from __Bird Nests__
   - Essentially a wild, unbreedable version of Chicken Eggs
 
-## Simple Hunting
+## Hunting
 
 (Contains food from Eat The World)
 
@@ -57,7 +57,7 @@
   - If bait is used, generates fishs and may kill Squids that come near it
 - Spear (Weapon that can be used in melee combat, and that can be thrown)
 
-## Simple Deco
+## Deco
 
 (Essentially stuff I would normally create with __Chisel and Bits__ - maybe use its API for compatability?)
 
@@ -85,15 +85,15 @@
 - Nightstand
 - Desk
 
-## Simple Gathering
+## Gathering
 
-(Like __Simple Hunting__, but with anything but animals)
+(Like __Hunting__, but with anything but animals)
 
-## Simple Eating
+## Eating
 
 (More and more complex food recipes)
 
-## Simple Prospecting
+## Prospecting
 
 ### Implemented
 - Iron Ore
