@@ -33,6 +33,7 @@
 - Compost (Block that can decompose organic material to create __Fertilizer__)
 - Crate (Deco block that can hold food items like apples, carrots, potatoes)
 - Watering Can (Item to speed up crop growth)
+- Grindstone (Block that can grind items like Wheat, __Redstone Crystals__, and maybe Ores)
 
 ## Simple Hunting
 
@@ -41,6 +42,7 @@
   - If bait is used, may kill rabbits or chickens that come near
 - Fish Trap
   - If bait is used, generates fishs and may kill Squids that come near
+- Spear (Weapon that can be used in melee combat, and that can be thrown)
 
 ## Simple Deco
 
@@ -65,3 +67,34 @@
 - Cupboard
 - Nightstand
 - Desk
+
+## Simple Prospecting
+
+### Implemented
+- Iron Ore
+  - Item that drops from Iron Ore
+  - Will be affected by Fortune
+  - Can be smelted and generally treated like the Block
+- Gold Ore
+  - Item that drops from Gold Ore
+  - Will be affected by Fortune
+  - Can be smelted and generally treated like the Block
+
+### Planned
+- Similar Ore Items for other Ores
+- Redstone Crystals
+  - Item that drops from Redstone Ore instead of Dust
+  - Can be ground
+- Copper
+  - Tools, Weapons, Armor, Ore, Ingot, etc.
+  - Weaker than Iron, but better than Stone
+  - Is needed to collect Iron Ore
+- Tin
+  - Is needed to create Bronze with Copper
+  - (Other uses ?)
+- Bronze
+  - Tools, Weapons, Armor, NO ORE, Ingot, etc.
+  - Better than Iron, but weaker than Diamond
+  - Is needed to collect Diamonds
+- (Other Metals?)
+- (Minerals like Sulfur?)
