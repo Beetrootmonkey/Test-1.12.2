@@ -85,6 +85,7 @@
 - Nightstand
 - Desk
 - Trash Can
+- Concrete Blocks (Smooth, Tile)
 
 ## Gathering
 
