@@ -84,6 +84,7 @@
 - Cupboard
 - Nightstand
 - Desk
+- Trash Can
 
 ## Gathering
 
