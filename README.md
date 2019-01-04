@@ -1,7 +1,10 @@
 ## Features
 
 ### Implemented
-- Trough (Block that feeds animals in its vincinity)
+- Trough
+  - Block that feeds animals in its vincinity
+  - Can only hold food that animals use to breed
+  - Wheat blocks can be used to place 9x Wheat in it
 - Nest (Block that picks up eggs lying on the ground)
 - Barn Floor
   - Block that gradually gets dirtier as animals walk over it
@@ -25,3 +28,7 @@
   - Can be planted into Plant Pots to create a __Potted Tree Seedling__
 - Tree Seedling (Plant that has a chance to grow into a sapling)
 - Potted Tree Seedling (Plant that when fully grown can be harvested for a sapling)
+- Scythe/Sickle (Tool that can harvest more than one crop at a time)
+- Bag of Fertilizer (Item that grows more than one crop at a time)
+- Compost (Block that can decompose organic material to create __Fertilizer__)
+- Crate (Deco block that can hold food items like apples, carrots, potatoes)
