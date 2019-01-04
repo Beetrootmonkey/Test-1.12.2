@@ -1,4 +1,4 @@
-## Features
+## Simple Farming
 
 ### Implemented
 - Trough
@@ -32,3 +32,27 @@
 - Bag of Fertilizer (Item that grows more than one crop at a time)
 - Compost (Block that can decompose organic material to create __Fertilizer__)
 - Crate (Deco block that can hold food items like apples, carrots, potatoes)
+
+## Simple Deco
+
+### Planned
+- Couch
+- Tables
+- Chairs
+- Bathtub
+- Sink (Bathroom)
+- Towels
+- Toilet
+- Toilet Paper
+- Bathroom Rugs
+- Kitchen Sink
+- Rugs
+- Lamps
+- Kitchen Oven
+- Kitchen Counter
+- Fireplace
+- Chimney
+- Curtains
+- Cupboard
+- Nightstand
+- Desk
