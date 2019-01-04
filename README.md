@@ -1,11 +1,11 @@
-##Features
+## Features
 
-#Implemented
+# Implemented
 - Trough (Block that feeds animals in its vincinity)
 - Nest (Block that picks up eggs lying on the ground)
 - Barn Floor (Block that gradually gets dirtier as animals walk over it)
 
-#Planned
+# Planned
 - Pitchfork (Tool that can collect manure from Barn Floor)
 - Manure (Item that can be collected from Barn Floor - can be used to create Fertilizer)
 - Fertilizer (Item that can be used like Bonemeal and in the creation of Fertile Earth)
