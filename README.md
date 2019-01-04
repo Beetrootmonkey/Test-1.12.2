@@ -59,6 +59,8 @@
 
 ## Simple Deco
 
+(Essentially stuff I would normally create with __Chisel and Bits__ - maybe use its API for compatability?)
+
 ### Planned
 - Couch
 - Tables
@@ -72,6 +74,8 @@
 - Kitchen Sink
 - Rugs
 - Lamps
+- Miner's Lamp
+- Support Beams
 - Kitchen Oven
 - Kitchen Counter
 - Fireplace
