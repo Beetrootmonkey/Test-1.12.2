@@ -41,6 +41,10 @@
 - Raw Bread (Item that can be smelted to Bread)
 - Cookie Dough (Item that can be smelted for Cookies)
 - Cocoa Powder (Item that is received by grounding Cocoa)
+- Bird Nest (Item that sometimes drop from Leaves)
+- Bird Egg
+  - Item that you get from __Bird Nests__
+  - Essentially a wild, unbreedable version of Chicken Eggs
 
 ## Simple Hunting
 
@@ -48,9 +52,9 @@
 
 ### Planned
 - Snap Trap
-  - If bait is used, may kill rabbits or chickens that come near
+  - If bait is used, may kill Rabbits or Chickens that come near it
 - Fish Trap
-  - If bait is used, generates fishs and may kill Squids that come near
+  - If bait is used, generates fishs and may kill Squids that come near it
 - Spear (Weapon that can be used in melee combat, and that can be thrown)
 
 ## Simple Deco
