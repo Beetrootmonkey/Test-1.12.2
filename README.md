@@ -32,6 +32,15 @@
 - Bag of Fertilizer (Item that grows more than one crop at a time)
 - Compost (Block that can decompose organic material to create __Fertilizer__)
 - Crate (Deco block that can hold food items like apples, carrots, potatoes)
+- Watering Can (Item to speed up crop growth)
+
+## Simple Hunting
+
+### Planned
+- Snap Trap
+  - If bait is used, may kill rabbits or chickens that come near
+- Fish Trap
+  - If bait is used, generates fishs and may kill Squids that come near
 
 ## Simple Deco
 
