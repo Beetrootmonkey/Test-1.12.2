@@ -33,7 +33,6 @@
 - Compost (Block that can decompose organic material to create __Fertilizer__)
 - Crate (Deco block that can hold food items like apples, carrots, potatoes)
 
-
 ## Simple Deco
 
 ### Planned
