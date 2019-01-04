@@ -8,7 +8,7 @@
 - Nest (Block that picks up eggs lying on the ground)
 - Barn Floor
   - Block that gradually gets dirtier as animals walk over it
-  - Can be _scraped_ with a __Pitchfork__ to yield __Manure__
+  - Can be "scraped" with a __Pitchfork__ to yield __Manure__
 
 ### Planned
 - Pitchfork (Tool that can collect manure from __Barn Floor__)
@@ -34,6 +34,13 @@
 - Crate (Deco block that can hold food items like apples, carrots, potatoes)
 - Watering Can (Item to speed up crop growth)
 - Grindstone (Block that can grind items like Wheat, __Redstone Crystals__, and maybe Ores)
+- Flour
+  - Made from Wheat and Potatoes
+  - Used in __Dough__
+- Dough (Item that is used to make __Raw Bread__ and __Cookie Dough__)
+- Raw Bread (Item that can be smelted to Bread)
+- Cookie Dough (Item that can be smelted for Cookies)
+- Cocoa Powder (Item that is received by grounding Cocoa)
 
 ## Simple Hunting
 
