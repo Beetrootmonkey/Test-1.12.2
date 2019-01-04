@@ -37,6 +37,8 @@
 
 ## Simple Hunting
 
+(Contains food from Eat The World)
+
 ### Planned
 - Snap Trap
   - If bait is used, may kill rabbits or chickens that come near
@@ -67,6 +69,14 @@
 - Cupboard
 - Nightstand
 - Desk
+
+## Simple Gathering
+
+(Like __Simple Hunting__, but with anything but animals)
+
+## Simple Eating
+
+(More and more complex food recipes)
 
 ## Simple Prospecting
 
