@@ -8,14 +8,17 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class ClientOnlyProxy extends CommonProxy {
 
-	public void preInit() {
+	@Override
+    public void preInit() {
 		super.preInit();
 	}
 
+	@Override
 	public void init() {
 		super.init();
 	}
 
+	@Override
 	public void postInit() {
 		super.postInit();
 	}
