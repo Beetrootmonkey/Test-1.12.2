@@ -1,9 +1,22 @@
-{
-    "parent": "block/cube_bottom_top",
+{   "parent": "block/block",
+    "display": {
+        "fixed": {
+            "rotation": [ 0, 90, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.5, 0.5, 0.5 ]
+        }
+    },
     "textures": {
-        "particle": "sfm:blocks/barn_floor_0",
-        "bottom": "sfm:blocks/barn_floor_0",
-        "top": "sfm:blocks/barn_floor_0",
-        "side": "sfm:blocks/barn_floor_0"
-    }
+        "particle": "sfm:blocks/barn_floor",
+        "top": "sfm:blocks/barn_floor"
+    },
+    "elements": [
+        {   "__comment": "Base",
+            "from": [ 0, 0, 0 ],
+            "to": [ 16, 1, 16 ],
+            "faces": {
+                "up":  { "uv": [ 0,  0, 16, 16 ], "texture": "#top" }
+            }
+        }
+    ]
 }

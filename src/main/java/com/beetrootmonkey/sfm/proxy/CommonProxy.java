@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -35,17 +36,17 @@ public abstract class CommonProxy {
 	public abstract void registerItemRenderer(Item item, int meta, String id);
 	
 	@SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+    public static void registerBlocks(Register<Block> event) {
 		ModBlocks.register();
 	}
 	
 	@SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
+    public static void registerItems(Register<Item> event) {
 		ModItems.register();
 	}
 	
 	@SubscribeEvent
-    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+    public static void registerRecipes(Register<IRecipe> event) {
 		ModRecipes.register();
 	}
 }

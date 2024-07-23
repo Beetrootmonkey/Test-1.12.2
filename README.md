@@ -95,6 +95,12 @@
 
 (More and more complex food recipes)
 
+### Planned
+- Scrambled Egg = Milk + Egg + Pan
+- Fried Egg = Egg + Pan
+- Apple Juice = Apple + Juicer
+- Cocoa = 
+
 ## Prospecting
 
 ### Implemented
